@@ -1,0 +1,21 @@
+html {
+  overflow-x: hidden;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #F5F7FA;
+  position: relative;
+  margin: 0;
+  padding-bottom: 8%;
+  min-height: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
