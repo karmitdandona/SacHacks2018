@@ -1,4 +1,3 @@
 # SacHacks2018
 
-# Car Maintenance Web-App using Flask and SmartCar API
-# Devpost: [link]
+#### Car Maintenance Web-App using Flask and SmartCar API
