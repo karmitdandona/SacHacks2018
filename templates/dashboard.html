@@ -4,11 +4,54 @@
 {% endblock head %}
 {% block content %}
 
-<div class="main">
-  <h2>insert dashboard here</h2>
+<div class="container">
+  <h1 style="text-align:center">Dashboard</h1>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <h3>Make: {{data['make']}}</h3>
+    </div>
+    <div class="col">
+      <h3 style="text-align:center;">Model: {{data['model']}}</h3>
+    </div>
+    <div class="col">
+      <h3 style="text-align:right;">Year: {{data['year']}}</h3>
+    </div>
+  </div>
+  <hr>
+  <div class="row" style="justify-content:center">
+    {% if data['make']=="TESLA" %}
+      <a href="https://www.tesla.com/findus/service"><button type="button" class="btn btn-outline-danger">Schedule Appointment</button></a>
+    {% elif data['make']=="BMW" %}
+      
+    {% endif %}
+  </div>
+</div>
+
+<div class="main" style="padding: 15px 0px 0px 0px">
+  <div class="container-fluid" style="background-color:black">
+    {% if data['make']=="TESLA" %}
+      <div class="row" style="color:white; padding:10px 0px 10px 0px;">
+        <div class="col">
+          <h3 style="text-align:center">Air Filter</h3>
+          <h4>Replace every 25000 miles</h4>
+          <h4>Remaining miles before replacement: {{data['teslaAirFilterLifespan']}}</h4>
+        </div>
+        <div class="col">
+          <h3 style="text-align:center">Environmental Affects</h3>
+          <h4 style="text-align:right">You've lost {{25000-data['odometer'][-1]-data['teslaAirFilterLifespan']}} miles due to poor air quality.</h4>
+        </div>
+      </div>
+    {% endif %}
+
+
+  </div>
+
+
+  {{data}}
 </div>
 
 
-{% endblock content %}
 
-{varName}
+
+{% endblock content %}
