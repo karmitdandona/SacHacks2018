@@ -1,4 +1,8 @@
 from twilio.rest import Client 
+
+teslaServiceLink = "https://bit.ly/2qTY540"
+bmwServiceLink = "https://bit.ly/2oZwQDg"
+audiServiceLink = "https://audi.us/2qRXtvC"
  
 def smsMessager(messageBody):
   account_sid = 'ACbc5842ec489c7a7407796bf39f2121e4' 
