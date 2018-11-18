@@ -25,8 +25,8 @@ def callback():
 	vehicleID = vehicles[0]  # always takes the first vehicle
 	tempVehicle = vehicleInit.FindVehicleInstance(vehicleID, access["access_token"])  # basically puts the vehicle for selected car manafacturer into the data.json file
 	
-	# return redirect(url_for("dashboard", vehicleID=vehicleID))
-	return redirect(url_for("listVehicles"))
+	return redirect(url_for("dashboard", vehicleID="BMWSimulation"))
+	# return redirect(url_for("listVehicles"))
 
 @app.route('/listVehicles', methods=["GET", "POST"])
 def listVehicles():

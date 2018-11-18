@@ -42,7 +42,11 @@
           </div>
           <div class="col">
             <h3 style="text-align:center">Environmental Effects</h3>
-            <h4 style="text-align:center"><span style="color:red">{{25000-data['odometer'][-1]-data['teslaAirFilterLifespan']}}</span> miles lost due to poor air quality.</h4>
+            {% if 25000-data['odometer'][-1]-data['teslaAirFilterLifespan'] <=0 %}
+              <h3 style="text-align:center; color:red; padding: 10px 0px 0px 0px;">ALERT! Air filter maintenance required!</h3>
+            {% else %}
+              <h4 style="text-align:center"><span style="color:red">{{25000-data['odometer'][-1]-data['teslaAirFilterLifespan']}}</span> miles lost due to poor air quality.</h4>
+            {% endif %}
           </div>
         </div>
     </div>
@@ -62,7 +66,11 @@
           </div>
           <div class="col">
             <h3 style="text-align:center">Environmental Effects</h3>
-            <h4 style="text-align:center"><span style="color:red">{{70000-data['odometer'][-1]-data['brakePadLifespan']}}</span> miles lost due to low temperature.</h4>
+            {% if 70000-data['odometer'][-1]-data['brakePadLifespan'] <= 0 %}
+              <h3 style="text-align:center; color:red; padding: 10px 0px 0px 0px;">ALERT! Brake pad maintenance required!</h3>
+            {% else %}
+              <h4 style="text-align:center"><span style="color:red">{{70000-data['odometer'][-1]-data['brakePadLifespan']}}</span> miles lost due to low temperature.</h4>
+            {% endif %}
           </div>
         </div>
     </div>
@@ -83,7 +91,11 @@
           </div>
           <div class="col">
             <h3 style="text-align:center">Environmental Effects</h3>
-            <h4 style="text-align:center"><span style="color:red">{{54000-data['odometer'][-1]-data['batteryLifespan']}}</span> miles lost due to low temperature.</h4>
+            {% if 54000-data['odometer'][-1]-data['batteryLifespan'] <= 0 %}
+              <h3 style="text-align:center; color:red; padding: 10px 0px 0px 0px;">ALERT! Battery maintenance required!</h3>
+            {% else %}
+              <h4 style="text-align:center"><span style="color:red">{{54000-data['odometer'][-1]-data['batteryLifespan']}}</span> miles lost due to low temperature.</h4>
+            {% endif %}
           </div>
         </div>
     </div>
@@ -102,7 +114,11 @@
       </div>
       <div class="col">
         <h3 style="text-align:center">Environmental Effects</h3>
-        <h4 style="text-align:center"><span style="color:red">{{13500-data['odometer'][-1]-data['windshieldWiperLifespan']}}</span> miles lost due to rain or snow.</h4>
+          {% if 13500-data['odometer'][-1]-data['windshieldWiperLifespan'] <= 0 %}
+            <h3 style="text-align:center; color:red; padding: 10px 0px 0px 0px;">ALERT! Windshield wiper maintenance required!</h3>
+          {% else %}
+            <h4 style="text-align:center"><span style="color:red">{{13500-data['odometer'][-1]-data['windshieldWiperLifespan']}}</span> miles lost due to rain or snow.</h4>
+          {% endif %}
       </div>
     </div>
   </div>

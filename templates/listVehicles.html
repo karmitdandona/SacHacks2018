@@ -11,13 +11,19 @@
   </div>
 
   <div>
-    {% for car in vehicleIDs[1:] %}
+    <!-- {% for car in vehicleIDs[1:] %}
       {% if 'simulation' in car %}
         <div style="padding:10px 0px 10px 0px; text-align:center;">
           <a href="{{url_for('dashboard', vehicleID=car)}}"><button type="button" class="btn btn-primary">Simulated Car</button></a>
         </div>
       {% endif %}
-    {% endfor %}
+    {% endfor %} -->
+    <div style="padding:10px 0px 10px 0px; text-align:center;">
+      <a href="{{url_for('dashboard', vehicleID='TeslaSimulation')}}"><button type="button" class="btn btn-primary">Tesla Simulation</button></a>
+    </div>
+    <div style="padding:10px 0px 10px 0px; text-align:center;">
+      <a href="{{url_for('dashboard', vehicleID='BMWSimulation')}}"><button type="button" class="btn btn-primary">BMW Simulation</button></a>
+    </div>
   </div>
 </div>
 
