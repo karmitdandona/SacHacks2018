@@ -19,7 +19,27 @@ examples:
 Also we need an update function (given a vehicle ID and a vehicle instance, update the dictionary's vehicle ID with the new vehicle instance)
 """
 import json
+import smartcar
+
 from vehicle import Vehicle
+
+def FindVehicleInstance(vehicleID, accessToken):
+  """check if it exists in json file. if so, return that. if not, make new instance in that json"""
+  vehiclesDict = getVehicleDataAsDict()
+  if vehicleID in vehiclesDict:
+    return toVehicleInstance(vehicleID, vehiclesDict[vehicleID])  # return the vehicle instance (already in data.json)
+  else:
+    # doesn't exist in data.json, we'll add it into there
+    vehicle = smartcar.Vehicle(vehicleID, accessToken["access_token"])
+    vehicleInfo = vehicle.info()
+    vehicleOdometer = vehicle.odometer()['data']['distance']
+    vehicleLatitude = vehicle.location()['data']['latitude']
+    vehicleLongitude = vehicle.location()['data']['longitude']
+    newVehicleInstance = Vehicle(vehicleID, vehicleInfo['make'], vehicleInfo['model'], vehicleInfo['year'], [vehicleOdometer], [(vehicleLatitude, vehicleLongitude)], accessToken)
+
+    updateDictionary(vehicleID, newVehicleInstance.VehicleToDict())
+
+    return newVehicleInstance
 
 """Creates vehicle dictionary when data.json is empty"""
 def vehicleInit(vehicleId, vehicle):
@@ -36,7 +56,7 @@ def getVehicleDataAsDict():
   return storedJson
 
 
-"""Pushes a new vehicile on the dictionary"""
+"""Pushes a new vehicle (dict) on the dictionary"""
 def updateDictionary(vechicleId, vehicle):
   
   # pull in json and read in dictionary
