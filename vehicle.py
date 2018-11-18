@@ -1,3 +1,5 @@
+import SendSms
+
 class Vehicle:
   def __init__(self, idInput, make, model, year, odometer, location, accessToken):
     self.id = idInput
@@ -11,6 +13,31 @@ class Vehicle:
     self.odometer = odometer
     self.location = location # tuple(latitude, longitude)
     self.accessToken = accessToken
+    self.textSent = {"airFilter": False, "brakePad": False, "battery": False, "windshieldWiper": False}
+
+  def SendText(self, keyToSendFor):
+    messageEnd = " miles remaining! Schedule Appointment: "
+    if self.make == "TESLA":
+      messageEnd += SendSms.teslaServiceLink
+    elif self.make == "BMW":
+      messageEnd += SendSms.bmwServiceLink
+    elif self.make == "AUDI":
+      messageEnd += SendSms.audiServiceLink
+
+    if keyToSendFor == "airFilter":
+      SendSms.smsMessager("Air filter maintenance required, " + str(self.teslaAirFilterLifespan) + messageEnd) 
+      self.textSent["airFilter"] = True
+    elif keyToSendFor == "brakePad":
+      SendSms.smsMessager("Brake pad maintenance required, " + str(self.brakePadLifespan) + messageEnd)
+      self.textSent["brakePad"] = True
+    elif keyToSendFor == "battery":
+      SendSms.smsMessager("Battery maintenance required, " + str(self.batteryLifespan) + messageEnd)
+      self.textSent["battery"] = True
+    elif keyToSendFor == "windshieldWiper":
+      SendSms.smsMessager("Windshield wiper maintenance required, " + str(self.windshieldWiperLifespan) + messageEnd)
+      self.textSent["windshieldWiper"] = True
+    return
+
 
   def VehicleToDict(self):
     dictInstance = {}
@@ -25,6 +52,7 @@ class Vehicle:
     dictInstance['odometer'] = self.odometer
     dictInstance['location'] = str(self.location)
     dictInstance['accessToken'] = self.accessToken
+    dictInstance['textSent'] = self.textSent
     return dictInstance
 
 
@@ -78,8 +106,3 @@ class Vehicle:
 
   def decreasebrakePadLifespan(self, lifespan):
     self.brakePadLifespan - lifespan
-
-# vehicleTest = Vehicle(12455, "Tesla", "S3", 2018, 50000, (38.665266, -121.391185), None)
-# print(vehicleTest.VehicleToDict())
-
-# print(eval((vehicleTest.VehicleToDict())['location']))

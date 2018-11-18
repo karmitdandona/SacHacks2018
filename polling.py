@@ -10,8 +10,6 @@ import rules
 import weather
 import airquality
 
-
-
 def UpdateAllVehicles():
   vehicleDict = vehicleInit.getVehicleDataAsDict()
   for key,val in vehicleDict.items():
@@ -33,6 +31,15 @@ def UpdateAllVehicles():
     weatherDict = weather.GetWeather(currentLongitude, currentLatitude)
     aiqDict = airquality.GetAiq(currentLongitude, currentLatitude)
     updatedInstance = rules.executeRules(curInstance, aiqDict['aiq'], weatherDict["temp"], weatherDict["climate"])
+
+    if updatedInstance.teslaAirFilterLifespan <= 500 and updatedInstance.textSent['airFilter'] == False and updatedInstance.make == "TESLA":
+      updatedInstance.SendText("airFilter")
+    if updatedInstance.brakePadLifespan <= 1000 and updatedInstance.textSent["brakePad"] == False and updatedInstance.make != "TESLA":
+      updatedInstance.SendText("brakePad")
+    if updatedInstance.batteryLifespan <= 1000 and updatedInstance.textSent["battery"] == False and updatedInstance.make != "TESLA":
+      updatedInstance.SendText("battery")
+    if updatedInstance.windshieldWiperLifespan <= 200 and updatedInstance.textSent["windshieldWiper"] == False:
+      updatedInstance.SendText("windshieldWiper")
 
     # put the updated vehicle back into dict
     vehicleDict[key] = updatedInstance.VehicleToDict()

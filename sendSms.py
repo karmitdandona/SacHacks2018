@@ -7,7 +7,7 @@ def smsMessager(messageBody):
 
   message = client.messages.create( 
     from_='+18434597340',
-    body='Automated response from SmartMaintain: {0}'.format(messageBody),         
+    body='SmartMaintain: {0}'.format(messageBody),         
     to='+18439573064' 
   ) 
   print(message.sid)
