@@ -8,8 +8,8 @@ class Vehicle:
     self.brakePadLifespan = 70000
     self.batteryLifespan = 54000
     self.windshieldWiperLifespan = 13500
-    self.odometer = [odometer]
-    self.location = [location] # tuple(latitude, longitude)
+    self.odometer = odometer
+    self.location = location # tuple(latitude, longitude)
     self.accessToken = accessToken
 
   def VehicleToDict(self):
@@ -67,7 +67,7 @@ class Vehicle:
   def setWindshieldWiperLifespan(self, windshieldWiperLifespan):
     self.windshieldWiperLifespan = windshieldWiperLifespan
 
-vehicleTest = Vehicle(12455, "Tesla", "S3", 2018, 50000, (38.665266, -121.391185), None)
-print(vehicleTest.VehicleToDict())
+# vehicleTest = Vehicle(12455, "Tesla", "S3", 2018, 50000, (38.665266, -121.391185), None)
+# print(vehicleTest.VehicleToDict())
 
-print(eval((vehicleTest.VehicleToDict())['location']))
+# print(eval((vehicleTest.VehicleToDict())['location']))

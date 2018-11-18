@@ -57,11 +57,3 @@ def toVehicleInstance(id, json):
   vehicle.setBatteryLifespan(json[id]["batteryLifespan"])
   vehicle.setWindshieldWiperLifespan(json[id]["windshieldWiperLifespan"])
   return vehicle
-
-  # return Vehicle(json[])
-jsonTest = {"newID55555": {"id": 12455, "make": "Tesla", "model": "S3", "year": 2018, "teslaAirFilterLifespan": 27000, "brakePadLifespan": 70000, "batteryLifespan": 54000, "windshieldWiperLifespan": 13500, "odometer":[50000], "location": "[(38.665266, -121.391185)]", "accessToken": None}}
-
-print(toVehicleInstance("newID55555", jsonTest))
-# vehicleInfo = Vehicle(12455, "Tesla", "S3", 2018, 50000, (38.665266, -121.391185))
-# print(vehicleInfo.toJson())
-# updateDictionary(Vehicle(12455, "Tesla", "S3", 2018, 50000, (38.665266, -121.391185)))

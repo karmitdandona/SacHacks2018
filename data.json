@@ -1,4 +1,4 @@
 {
   "newID55555": {"model": "Model S", "make": "TESLA", "id": "36ab27d0-fd9d-4455-823a-ce30af709ffc", "year": 2014, "odometer": [23422343, 234234, 234234234], "location": "[(23.32423, 23.4323), (43, 342)]" }, 
-  "newID23423": {"model": "Model S", "year": 2014, "make": "TESLA", "id": "36ab27d0-fd9d-4455-823a-ce30af709ffc", "odometer": [23422343, 234234, 234234234], "location": "[(23.32423, 23.4323), (43, 342)]"}
+  "newID23423": {"model": "Model S", "year": 2014, "make": "TESLA", "id": "36ab27d0-fd9d-4455-ce30af709ffc", "odometer": [23422343, 234234, 234234234], "location": "[(23.32423, 23.4323), (43, 342)]"}
 }
