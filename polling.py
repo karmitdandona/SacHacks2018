@@ -53,7 +53,7 @@ def UpdateAllVehicles():
 def main():
   # schedule.every().hour.do(UpdateAllVehicles)
   # schedule.every().minute.do(UpdateAllVehicles)  # for testing
-  schedule.every(15).seconds.do(UpdateAllVehicles)
+  schedule.every(10).seconds.do(UpdateAllVehicles)
   while True:
     schedule.run_pending()
     time.sleep(1)
