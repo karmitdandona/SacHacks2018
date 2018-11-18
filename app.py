@@ -40,7 +40,7 @@ def listVehicles():
 def dashboard(vehicleID):
 # 	# accessToken = apiHelperFunctions.RefreshAccessToken(accessToken)
 	tempVehicle = vehicleInit.getVehicleDataAsDict()[vehicleID]
-	return render_template("dashboard.html", title="dashboard", data=tempVehicle)
+	return render_template("dashboard.html", title="Dashboard", data=tempVehicle)
 
 if __name__ == '__main__':
 	app.run(debug=True, host='0.0.0.0', port=5000)

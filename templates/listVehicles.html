@@ -5,15 +5,15 @@
 {% block content %}
 
 <div class="main">
-  <h2>List of Vehicles</h2>
-  <div style="padding:15px 0px 15px 0px;">
-    <a href="{{url_for('dashboard', vehicleID=vehicleIDs[0])}}"><button type="button" class="btn btn-primary">Random New Vehicle (Incoherent Data)</button></a>
+  <h2 style="text-align:center;"><b>List of Vehicles</b></h2>
+  <div style="padding:10px 0px 10px 0px; text-align:center;">
+    <a href="{{url_for('dashboard', vehicleID=vehicleIDs[0])}}"><button type="button" class="btn btn-primary">Random New Vehicle<br>(Incoherent Data)</button></a>
   </div>
 
   <div>
     {% for car in vehicleIDs[1:] %}
       {% if 'simulation' in car %}
-        <div style="padding:15px 0px 15px 0px;">
+        <div style="padding:10px 0px 10px 0px; text-align:center;">
           <a href="{{url_for('dashboard', vehicleID=car)}}"><button type="button" class="btn btn-primary">Simulated Car</button></a>
         </div>
       {% endif %}
