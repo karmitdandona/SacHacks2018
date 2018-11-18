@@ -30,7 +30,7 @@ def FindVehicleInstance(vehicleID, accessToken):
     return toVehicleInstance(vehicleID, vehiclesDict[vehicleID])  # return the vehicle instance (already in data.json)
   else:
     # doesn't exist in data.json, we'll add it into there
-    vehicle = smartcar.Vehicle(vehicleID, accessToken["access_token"])
+    vehicle = smartcar.Vehicle(vehicleID, accessToken)
     vehicleInfo = vehicle.info()
     vehicleOdometer = vehicle.odometer()['data']['distance']
     vehicleLatitude = vehicle.location()['data']['latitude']

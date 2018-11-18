@@ -4,7 +4,7 @@ class Vehicle:
     self.make = make
     self.model = model
     self.year = year
-    self.teslaAirFilterLifespan = 27000
+    self.teslaAirFilterLifespan = 25000
     self.brakePadLifespan = 70000
     self.batteryLifespan = 54000
     self.windshieldWiperLifespan = 13500

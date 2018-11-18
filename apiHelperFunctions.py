@@ -18,9 +18,10 @@ def FreshAccessToken(oldToken):
   else:
     return tokenDict
 
+def RefreshAccessToken(oldToken):
+  newToken = clientInstance.exchange_refresh_token(oldToken)
+  return newToken
+
 def GetVehicles(accessToken):
-  print(accessToken)
-  print(type(accessToken))
-  print("\n\n\n")
   vehicles = smartcar.get_vehicle_ids(accessToken)
   return vehicles["vehicles"]

@@ -20,12 +20,12 @@ def callback():
 		return render_template("deniedPermissions.html", title="Denied Permissions")
 	access = apiHelperFunctions.clientInstance.exchange_code(code)
 	
-	return redirect(url_for("dashboard", accessToken=access))
+	return redirect(url_for("dashboard", accessToken=access["access_token"]))
 
 @app.route('/dashboard/<accessToken>', methods=["GET", "POST"])
 def dashboard(accessToken):
-	accessToken = apiHelperFunctions.FreshAccessToken(accessToken)  # in case its expired
-	vehicles = apiHelperFunctions.GetVehicles(accessToken["access_token"])
+	# accessToken = apiHelperFunctions.RefreshAccessToken(accessToken)
+	vehicles = apiHelperFunctions.GetVehicles(accessToken)
 	vehicleID = vehicles[0]  # always takes the first vehicle
 	
 	tempVehicle = vehicleInit.FindVehicleInstance(vehicleID, accessToken)

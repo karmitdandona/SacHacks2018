@@ -14,8 +14,8 @@ def UpdateAllVehicles():
   for key,val in vehicleDict.items():
     # --- GET NEW INFORMATION (NEW QUERY) --- #
     accessToken = val["accessToken"]
-    accessToken = apiHelperFunctions.FreshAccessToken(accessToken)  # it'll probably be expired
-    vehicle = smartcar.Vehicle(key, accessToken["access_token"])
+    # accessToken = apiHelperFunctions.RefreshAccessToken(accessToken)  # it'll probably be expired
+    vehicle = smartcar.Vehicle(key, accessToken)
     currentLocation = vehicle.location()
     currentLatitude = currentLocation["data"]["latitude"]
     currentLongitude = currentLocation["data"]["longitude"]
@@ -34,13 +34,13 @@ def UpdateAllVehicles():
     # put the updated vehicle back into dict
     vehicleDict[key] = updatedInstance.VehicleToDict()
 
-  
+  print("update successful")
   with open('data.json', 'w') as outfile:
     json.dump(vehicleDict, outfile)
 
 def main():
-  schedule.every().hour.do(UpdateAllVehicles)
-  # schedule.every().minute.do(UpdateAllVehicles)  # testing
+  # schedule.every().hour.do(UpdateAllVehicles)
+  schedule.every().minute.do(UpdateAllVehicles)  # testing
   while True:
     schedule.run_pending()
     time.sleep(1)
