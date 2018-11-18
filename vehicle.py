@@ -1,4 +1,4 @@
-import SendSms
+import sendSms
 
 class Vehicle:
   def __init__(self, idInput, make, model, year, odometer, location, accessToken):
@@ -18,23 +18,23 @@ class Vehicle:
   def SendText(self, keyToSendFor):
     messageEnd = " miles remaining! Schedule Appointment: "
     if self.make == "TESLA":
-      messageEnd += SendSms.teslaServiceLink
+      messageEnd += sendSms.teslaServiceLink
     elif self.make == "BMW":
-      messageEnd += SendSms.bmwServiceLink
+      messageEnd += sendSms.bmwServiceLink
     elif self.make == "AUDI":
-      messageEnd += SendSms.audiServiceLink
+      messageEnd += sendSms.audiServiceLink
 
     if keyToSendFor == "airFilter":
-      SendSms.smsMessager("Air filter maintenance required, " + str(self.teslaAirFilterLifespan) + messageEnd) 
+      sendSms.smsMessager("Air filter maintenance required, " + str(self.teslaAirFilterLifespan) + messageEnd) 
       self.textSent["airFilter"] = True
     elif keyToSendFor == "brakePad":
-      SendSms.smsMessager("Brake pad maintenance required, " + str(self.brakePadLifespan) + messageEnd)
+      sendSms.smsMessager("Brake pad maintenance required, " + str(self.brakePadLifespan) + messageEnd)
       self.textSent["brakePad"] = True
     elif keyToSendFor == "battery":
-      SendSms.smsMessager("Battery maintenance required, " + str(self.batteryLifespan) + messageEnd)
+      sendSms.smsMessager("Battery maintenance required, " + str(self.batteryLifespan) + messageEnd)
       self.textSent["battery"] = True
     elif keyToSendFor == "windshieldWiper":
-      SendSms.smsMessager("Windshield wiper maintenance required, " + str(self.windshieldWiperLifespan) + messageEnd)
+      sendSms.smsMessager("Windshield wiper maintenance required, " + str(self.windshieldWiperLifespan) + messageEnd)
       self.textSent["windshieldWiper"] = True
     return
 

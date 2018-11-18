@@ -38,7 +38,7 @@ def executeRules(vehicleInstance, airQuality, tempurature, climate):
   if climate == "Drizzle" or climate == "Rain" or climate == "Snow":
     updatedInstance = manipulateWindshieldWiper(updatedInstance)
 
-  if updatedInstance.getModel() == "Tesla":
+  if updatedInstance.make == "TESLA":
     updatedInstance.decreaseTeslaAirFilterLifespan(milesDrivenSinceLast) 
     if airQuality > 100:
       updatedInstance = manipulateTeslaAirFilter(updatedInstance, airQuality)

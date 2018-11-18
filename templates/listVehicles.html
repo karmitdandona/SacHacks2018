@@ -12,7 +12,7 @@
 
   <div>
     <!-- {% for car in vehicleIDs[1:] %}
-      {% if 'simulation' in car %}
+      {% if 'simulation' in car or 'Simulation' in car%}
         <div style="padding:10px 0px 10px 0px; text-align:center;">
           <a href="{{url_for('dashboard', vehicleID=car)}}"><button type="button" class="btn btn-primary">Simulated Car</button></a>
         </div>
