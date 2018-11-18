@@ -6,18 +6,12 @@ lat = 74.0060
 lon = 40.7128
 
 apiTarget = "https://api.waqi.info/feed/geo:{0};{1}/?token=0daef5bc25531d763ff0adaf8f460153ecd3d004".format(lat, lon)
-print(apiTarget)
 r = requests.get(apiTarget)
 r.text
 data = json.loads(r.text)
 
-test = data
-
 def url_builder(lon, lat):
-  user_api = '0daef5bc25531d763ff0adaf8f460153ecd3d004' 
-  api = ('https://api.waqi.info/feed/geo:' + str(lat) + ';' + str(lon) + "/?token=" + user_api)
-  full_api_url = api + '/?token=:' + user_api
-  return full_api_url
+  return "https://api.waqi.info/feed/geo:{0};{1}/?token=0daef5bc25531d763ff0adaf8f460153ecd3d004".format(lat, lon)
 
 def data_fetch(full_api_url):
   url = urllib.request.urlopen(full_api_url)
