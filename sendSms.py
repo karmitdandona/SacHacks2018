@@ -42,13 +42,13 @@ gabrielle5TwilioInfo["twilio_number"] = "+14785594523"
 gabrielle5TwilioInfo["phone_number"] = "+18439573064" 
  
 def smsMessager(messageBody):
-  account_sid = gabrielleTwilioInfo["account_sid"]
-  auth_token = gabrielleTwilioInfo["auth_token"]
+  account_sid = cameronTwilioInfo["account_sid"]
+  auth_token = cameronTwilioInfo["auth_token"]
   client = Client(account_sid, auth_token) 
 
   message = client.messages.create( 
-    from_=gabrielleTwilioInfo["twilio_number"],
+    from_=cameronTwilioInfo["twilio_number"],
     body="SmartMaintain: {0}".format(messageBody),         
-    to=gabrielleTwilioInfo["phone_number"]
+    to=cameronTwilioInfo["phone_number"]
   ) 
   print(message.sid)
