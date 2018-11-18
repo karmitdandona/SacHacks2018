@@ -75,4 +75,5 @@ def toVehicleInstance(id, vehicleDict):
   vehicle.setBrakePadLifespan(vehicleDict["brakePadLifespan"])
   vehicle.setBatteryLifespan(vehicleDict["batteryLifespan"])
   vehicle.setWindshieldWiperLifespan(vehicleDict["windshieldWiperLifespan"])
+  vehicle.textSent = vehicleDict["textSent"]
   return vehicle

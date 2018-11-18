@@ -13,6 +13,8 @@ import airquality
 def UpdateAllVehicles():
   vehicleDict = vehicleInit.getVehicleDataAsDict()
   for key,val in vehicleDict.items():
+    if "simulation" in key or "Simulation" in key:
+      continue
     # --- GET NEW INFORMATION (NEW QUERY) --- #
     accessToken = val["accessToken"]
     # accessToken = apiHelperFunctions.RefreshAccessToken(accessToken)  # it'll probably be expired
@@ -30,7 +32,16 @@ def UpdateAllVehicles():
     # --- MODIFY REMAINING LIFESPANS BASED ON RULES --- #
     weatherDict = weather.GetWeather(currentLongitude, currentLatitude)
     aiqDict = airquality.GetAiq(currentLongitude, currentLatitude)
-    updatedInstance = rules.executeRules(curInstance, aiqDict['aiq'], weatherDict["temp"], weatherDict["climate"])
+    updatedInstance = rules.executeRules(curInstance, aiqDict['aqi'], weatherDict["temp"], weatherDict["climate"])
+
+    if updatedInstance.teslaAirFilterLifespan <= 500 and updatedInstance.textSent['airFilter'] == False and updatedInstance.make == "TESLA":
+      updatedInstance.SendText("airFilter")
+    if updatedInstance.brakePadLifespan <= 1000 and updatedInstance.textSent["brakePad"] == False and updatedInstance.make != "TESLA":
+      updatedInstance.SendText("brakePad")
+    if updatedInstance.batteryLifespan <= 1000 and updatedInstance.textSent["battery"] == False and updatedInstance.make != "TESLA":
+      updatedInstance.SendText("battery")
+    if updatedInstance.windshieldWiperLifespan <= 200 and updatedInstance.textSent["windshieldWiper"] == False:
+      updatedInstance.SendText("windshieldWiper")
 
     # put the updated vehicle back into dict
     vehicleDict[key] = updatedInstance.VehicleToDict()
@@ -41,7 +52,8 @@ def UpdateAllVehicles():
 
 def main():
   # schedule.every().hour.do(UpdateAllVehicles)
-  schedule.every().minute.do(UpdateAllVehicles)  # for testing
+  # schedule.every().minute.do(UpdateAllVehicles)  # for testing
+  schedule.every(15).seconds.do(UpdateAllVehicles)
   while True:
     schedule.run_pending()
     time.sleep(1)

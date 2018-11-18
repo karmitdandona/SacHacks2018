@@ -26,7 +26,7 @@ def smsMessager(messageBody):
 
   message = client.messages.create( 
     from_=gabrielleTwilioInfo["twilio_number"],
-    body="Automated response from SmartMaintain: {0}".format(messageBody),         
+    body="SmartMaintain: {0}'.format(messageBody)",         
     to=gabrielleTwilioInfo["phone_number"]
   ) 
   print(message.sid)
