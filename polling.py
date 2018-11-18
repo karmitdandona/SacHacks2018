@@ -10,6 +10,8 @@ import rules
 import weather
 import airquality
 
+
+
 def UpdateAllVehicles():
   vehicleDict = vehicleInit.getVehicleDataAsDict()
   for key,val in vehicleDict.items():
