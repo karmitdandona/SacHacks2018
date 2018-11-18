@@ -1,32 +1,41 @@
 from vehicle import Vehicle
 
-vehicleInfo = Vehicle(12455, "Tesla", "S3", 2018, 50000, (38.665266, -121.391185))
+# vehicleTest = Vehicle(12455, "Tesla", "S3", 2018, 50000, (38.665266, -121.391185), None)
 
-def manipulateTeslaAirFilter(airQuality):
-  filterStatus = vehicleInfo.getTeslaAirFilterLifespan()
-  vehicleInfo.setTeslaAirFilterLifespan(filterStatus - airQuality * 0.03)
+def manipulateTeslaAirFilter(vehicleInstance, airQuality):
+  updatedInstance = vehicleInstance
+  filterStatus = updatedInstance.getTeslaAirFilterLifespan()
+  updatedInstance.setTeslaAirFilterLifespan(filterStatus - airQuality * 0.03)
+  return updatedInstance
 
-def manipulateBrakePad():
-  brakeStatus = vehicleInfo.getBrakePadLifespan()
-  vehicleInfo.setBrakePadLifespan(brakeStatus - 42)
+def manipulateBrakePad(vehicleInstance):
+  updatedInstance = vehicleInstance
+  brakeStatus = updatedInstance.getBrakePadLifespan()
+  updatedInstance.setBrakePadLifespan(brakeStatus - 42)
+  return updatedInstance
 
-def manipulateBattery():
-  batteryStatus = vehicleInfo.getBatteryLifespan()
-  vehicleInfo.setBatteryLifespan(batteryStatus - 19)
+def manipulateBattery(vehicleInstance):
+  updatedInstance = vehicleInstance
+  batteryStatus = updatedInstance.getBatteryLifespan()
+  updatedInstance.setBatteryLifespan(batteryStatus - 19)
+  return updatedInstance
 
-def manipulateWindshieldWiper():
-  wiperStatus = vehicleInfo.getWindshieldWiperLifespan()
-  vehicleInfo.setWindshieldWiperLifespan(wiperStatus - 18)
+def manipulateWindshieldWiper(vehicleInstance):
+  updatedInstance = vehicleInstance
+  wiperStatus = updatedInstance.getWindshieldWiperLifespan()
+  updatedInstance.setWindshieldWiperLifespan(wiperStatus - 18)
+  return updatedInstance
 
-def executeRules(airQuality, tempurature, climate):
-  if tempurature <= 32:
-    manipulateBrakePad()
+def executeRules(vehicleInstance, airQuality, tempurature, climate):
+  updatedInstance = vehicleInstance
   if climate == "Drizzle" or climate == "Rain" or climate == "Snow":
-    manipulateWindshieldWiper()
+    updatedInstance = manipulateWindshieldWiper(updatedInstance)
 
-  if vehicleInfo.getModel() == "Tesla":
+  if updatedInstance.getModel() == "Tesla":
     if airQuality > 100:
-      manipulateTeslaAirFilter(airQuality)
+      updatedInstance = manipulateTeslaAirFilter(updatedInstance, airQuality)
   else:
     if tempurature <= 32:
-      manipulateBattery()
+      updatedInstance = manipulateBattery(updatedInstance)
+      updatedInstance = manipulateBrakePad(updatedInstance)
+  return updatedInstance
