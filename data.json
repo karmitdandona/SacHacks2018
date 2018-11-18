@@ -1,4 +1,1 @@
-{
-  "newID55555": {"model": "Model S", "make": "TESLA", "id": "36ab27d0-fd9d-4455-823a-ce30af709ffc", "year": 2014, "odometer": [23422343, 234234, 234234234], "location": "[(23.32423, 23.4323), (43, 342)]" }, 
-  "newID23423": {"model": "Model S", "year": 2014, "make": "TESLA", "id": "36ab27d0-fd9d-4455-ce30af709ffc", "odometer": [23422343, 234234, 234234234], "location": "[(23.32423, 23.4323), (43, 342)]"}
-}
+{"2ae0566d-7a84-463b-a477-132cd2df0da0": {"id": "2ae0566d-7a84-463b-a477-132cd2df0da0", "make": "TESLA", "model": "Model X", "year": 2017, "teslaAirFilterLifespan": 27000, "brakePadLifespan": 70000, "batteryLifespan": 54000, "windshieldWiperLifespan": 13500, "odometer": [234990.984375], "location": "[(37.00014877319336, -105.77214050292969)]", "accessToken": {"access_token": "19feb0e5-7ab2-448b-8088-dab6ee8777f6", "token_type": "Bearer", "expires_in": 7200, "refresh_token": "c3657528-5bc3-4d4e-afcd-7eadce9b750b", "expiration": 
