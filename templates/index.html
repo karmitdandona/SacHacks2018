@@ -4,9 +4,59 @@
 {% endblock head %}
 {% block content %}
 
-<h1>HELLO WORLD SACHACKS 2018</h1>
+<h1 style="text-align:center";>SmartCar Maintenance </h1>
 
-<a href="{{authURL}}"><button type="button" class="btn btn-primary">Connect Your Car</button></a>
+<br><br><br>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="text-align:center">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <ul style="list-style-type:none; font-size:40px">
+          <li>This is gonna be</li>
+          <li> a pretty cool</li>
+          <li>project in the end</li>
+        </ul>
+      </div>
+      <div class="carousel-item">
+          <ul style="list-style-type:none; font-size:40px">
+              <li>This is gonna be</li>
+              <li> a pretty cool</li>
+              <li>project in the end</li>
+            </ul>
+      </div>
+      <div class="carousel-item">
+          <ul style="list-style-type:none; font-size:40px">
+              <li>This is gonna be</li>
+              <li> a pretty cool</li>
+              <li>project in the end</li>
+            </ul>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+<div style="text-align:center">
+</br></br></br>
+   <a href="{{authURL}}"; style="text-align: center"><button type="button" class="btn btn-primary">Connect Your Car</button></a>
+</div>
+</br></br>
+<p> 
+The SmartCar Maintenance app uses your car's location to analyze local climate conditions and predict the best maintanence schedule 
+fit for you.
+</p>
+
 
 {% endblock content %}
 
