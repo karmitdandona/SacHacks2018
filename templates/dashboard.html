@@ -4,11 +4,74 @@
 {% endblock head %}
 {% block content %}
 
-<div class="main">
-  <h2>insert dashboard here</h2>
+<div class="container">
+  <h1 style="text-align:center">Dashboard</h1>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <h3>Make: {{data['make']}}</h3>
+    </div>
+    <div class="col">
+      <h3 style="text-align:center;">Model: {{data['model']}}</h3>
+    </div>
+    <div class="col">
+      <h3 style="text-align:right;">Year: {{data['year']}}</h3>
+    </div>
+  </div>
+  <h4 style="text-align:center">Mileage: {{data['odometer'][-1]}}</h4>
+  <hr>
+  <div class="row" style="justify-content:center">
+    {% if data['make']=="TESLA" %}
+      <a href="https://www.tesla.com/findus/service" target="_blank"><button type="button" class="btn btn-outline-danger">Schedule Appointment</button></a>
+    {% elif data['make']=="BMW" %}
+      <a href="https://www.bmwusa.com/contact/dealer.html" target="_blank"><button type="button" class="btn btn-outline-danger">Schedule Appointment</button></a>
+    {% endif %}
+  </div>
+</div>
+
+<div class="main" style="padding: 15px 0px 0px 0px">
+  <div class="container-fluid" style="background-color:#222222">
+    {% if data['make']=="TESLA" %}
+      <div class="row" style="color:white; padding:10px 0px 10px 0px;">
+        <div class="col">
+          <h3 style="text-align:center">Air Filter</h3>
+          <ul>
+            <li><h4>Replace every 25000 miles</h4></li>
+            <li><h4>Remaining miles before replacement: {{data['teslaAirFilterLifespan']}}</h4></li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3 style="text-align:center">Environmental Effects</h3>
+          <h4 style="text-align:center"><span style="color:red">{{25000-data['odometer'][-1]-data['teslaAirFilterLifespan']}}</span> miles lost due to poor air quality.</h4>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="main" style="padding: 15px 0px 0px 0px">
+  <div class="container-fluid" style="background-color:#222222">
+    {% if data['make']!="TESLA" %}
+      <div class="row" style="color:white; padding:10px 0px 10px 0px;">
+        <div class="col">
+          <h3 style="text-align:center">Brake Pads</h3>
+          <ul>
+            <li><h4>Replace every 70000 miles</h4></li>
+            <li><h4>Remaining miles before replacement: {{data['brakePadLifespan']}}</h4></li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3 style="text-align:center">Environmental Effects</h3>
+          <h4 style="text-align:center"><span style="color:red">{{70000-data['odometer'][-1]-data['brakePadLifespan']}}</span> miles lost due to low temperature.</h4>
+        </div>
+      </div>
+    {% endif %}
+  </div>
 </div>
 
 
-{% endblock content %}
 
-{varName}
+
+{{data}}
+
+{% endblock content %}

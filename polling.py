@@ -8,6 +8,7 @@ import apiHelperFunctions
 import vehicle
 import rules
 import weather
+import airquality
 
 def UpdateAllVehicles():
   vehicleDict = vehicleInit.getVehicleDataAsDict()
@@ -28,8 +29,8 @@ def UpdateAllVehicles():
 
     # --- MODIFY REMAINING LIFESPANS BASED ON RULES --- #
     weatherDict = weather.GetWeather(currentLongitude, currentLatitude)
-    updatedInstance = rules.executeRules(curInstance, 32, weatherDict["temp"], weatherDict["climate"])
-    # FIXME add the airQuality parameter to above executeRules call (from airQuality.py)
+    aiqDict = airquality.GetAiq(currentLongitude, currentLatitude)
+    updatedInstance = rules.executeRules(curInstance, aiqDict['aiq'], weatherDict["temp"], weatherDict["climate"])
 
     # put the updated vehicle back into dict
     vehicleDict[key] = updatedInstance.VehicleToDict()
@@ -40,7 +41,7 @@ def UpdateAllVehicles():
 
 def main():
   # schedule.every().hour.do(UpdateAllVehicles)
-  schedule.every().minute.do(UpdateAllVehicles)  # testing
+  schedule.every().minute.do(UpdateAllVehicles)  # for testing
   while True:
     schedule.run_pending()
     time.sleep(1)

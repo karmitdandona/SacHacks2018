@@ -67,6 +67,18 @@ class Vehicle:
   def setWindshieldWiperLifespan(self, windshieldWiperLifespan):
     self.windshieldWiperLifespan = windshieldWiperLifespan
 
+  def decreaseWindshieldWiperLifespan(self, lifespan):
+    self.windshieldWiperLifespan -= lifespan
+
+  def decreaseTeslaAirFilterLifespan(self, lifespan):
+    self.teslaAirFilterLifespan -= lifespan
+
+  def decreaseBatteryLifespan(self, lifespan):
+    self.batteryLifespan - lifespan
+
+  def decreasebrakePadLifespan(self, lifespan):
+    self.brakePadLifespan - lifespan
+
 # vehicleTest = Vehicle(12455, "Tesla", "S3", 2018, 50000, (38.665266, -121.391185), None)
 # print(vehicleTest.VehicleToDict())
 

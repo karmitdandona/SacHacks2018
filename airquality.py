@@ -2,11 +2,6 @@ import requests
 import json
 import urllib.request
 
-apiTarget = "https://api.waqi.info/feed/geo:{0};{1}/?token=0daef5bc25531d763ff0adaf8f460153ecd3d004".format(lat, lon)
-r = requests.get(apiTarget)
-r.text
-data = json.loads(r.text)
-
 def GetAiq(lon,lat):
   #AIQ Levels: 0-50 Good, 51-100 Moderate, 101-150 Unhealthy for Sensitive Groups, 151-200 Unhealthy, 201-300 Very Unhealthy, 301-500 Hazardous
   fullURL = url_builder(lon, lat)
