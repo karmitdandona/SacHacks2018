@@ -29,65 +29,66 @@
   </div>
 </div>
 
-<div class="main" style="padding: 10px 0px 0px 0px">
-  <div class="container-fluid" style="background-color:#222222; border-radius: 7px">
-    {% if data['make']=="TESLA" %}
-      <div class="row" style="color:white; padding:20px 0px 10px 0px;">
-        <div class="col">
-          <h3 style="text-align:center">Air Filter</h3>
-          <ul>
-            <li><h4>Replace every 25000 miles</h4></li>
-            <li><h4>Remaining miles before replacement: {{data['teslaAirFilterLifespan']}}</h4></li>
-          </ul>
+{% if data['make']=="TESLA" %}
+  <div class="main" style="padding: 10px 0px 0px 0px">
+    <div class="container-fluid" style="background-color:#222222; border-radius: 7px">
+        <div class="row" style="color:white; padding:20px 0px 10px 0px;">
+          <div class="col">
+            <h3 style="text-align:center">Air Filter</h3>
+            <ul>
+              <li><h4>Replace every 25000 miles</h4></li>
+              <li><h4>Remaining miles before replacement: {{data['teslaAirFilterLifespan']}}</h4></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3 style="text-align:center">Environmental Effects</h3>
+            <h4 style="text-align:center"><span style="color:red">{{25000-data['odometer'][-1]-data['teslaAirFilterLifespan']}}</span> miles lost due to poor air quality.</h4>
+          </div>
         </div>
-        <div class="col">
-          <h3 style="text-align:center">Environmental Effects</h3>
-          <h4 style="text-align:center"><span style="color:red">{{25000-data['odometer'][-1]-data['teslaAirFilterLifespan']}}</span> miles lost due to poor air quality.</h4>
-        </div>
-      </div>
-    {% endif %}
+    </div>
   </div>
-</div>
+{% endif %}
 
-<div class="main" style="padding: 10px 0px 0px 0px">
-  <div class="container-fluid" style="background-color:#222222; border-radius: 7px">
-    {% if data['make']!="TESLA" %}
-      <div class="row" style="color:white; padding:20px 0px 10px 0px;">
-        <div class="col">
-          <h3 style="text-align:center">Brake Pads</h3>
-          <ul>
-            <li><h4>Replace every 70000 miles</h4></li>
-            <li><h4>Remaining miles before replacement: {{data['brakePadLifespan']}}</h4></li>
-          </ul>
+{% if data['make']!="TESLA" %}
+  <div class="main" style="padding: 10px 0px 0px 0px">
+    <div class="container-fluid" style="background-color:#222222; border-radius: 7px">
+        <div class="row" style="color:white; padding:20px 0px 10px 0px;">
+          <div class="col">
+            <h3 style="text-align:center">Brake Pads</h3>
+            <ul>
+              <li><h4>Replace every 70000 miles</h4></li>
+              <li><h4>Remaining miles before replacement: {{data['brakePadLifespan']}}</h4></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3 style="text-align:center">Environmental Effects</h3>
+            <h4 style="text-align:center"><span style="color:red">{{70000-data['odometer'][-1]-data['brakePadLifespan']}}</span> miles lost due to low temperature.</h4>
+          </div>
         </div>
-        <div class="col">
-          <h3 style="text-align:center">Environmental Effects</h3>
-          <h4 style="text-align:center"><span style="color:red">{{70000-data['odometer'][-1]-data['brakePadLifespan']}}</span> miles lost due to low temperature.</h4>
-        </div>
-      </div>
-    {% endif %}
+    </div>
   </div>
-</div>
+{% endif %}
 
-<div class="main" style="padding: 10px 0px 0px 0px">
-  <div class="container-fluid" style="background-color:#222222; border-radius: 7px">
-    {% if data['make']!="TESLA" %}
-      <div class="row" style="color:white; padding:20px 0px 10px 0px;">
-        <div class="col">
-          <h3 style="text-align:center">Battery</h3>
-          <ul>
-            <li><h4>Replace every 54000 miles</h4></li>
-            <li><h4>Remaining miles before replacement: {{data['batteryLifespan']}}</h4></li>
-          </ul>
+
+{% if data['make']!="TESLA" %}
+  <div class="main" style="padding: 10px 0px 0px 0px">
+    <div class="container-fluid" style="background-color:#222222; border-radius: 7px">
+        <div class="row" style="color:white; padding:20px 0px 10px 0px;">
+          <div class="col">
+            <h3 style="text-align:center">Battery</h3>
+            <ul>
+              <li><h4>Replace every 54000 miles</h4></li>
+              <li><h4>Remaining miles before replacement: {{data['batteryLifespan']}}</h4></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3 style="text-align:center">Environmental Effects</h3>
+            <h4 style="text-align:center"><span style="color:red">{{54000-data['odometer'][-1]-data['batteryLifespan']}}</span> miles lost due to low temperature.</h4>
+          </div>
         </div>
-        <div class="col">
-          <h3 style="text-align:center">Environmental Effects</h3>
-          <h4 style="text-align:center"><span style="color:red">{{54000-data['odometer'][-1]-data['batteryLifespan']}}</span> miles lost due to low temperature.</h4>
-        </div>
-      </div>
-    {% endif %}
+    </div>
   </div>
-</div>
+{% endif %}
 
 <div class="main" style="padding: 10px 0px 0px 0px">
   <div class="container-fluid" style="background-color:#222222; border-radius: 7px">
@@ -106,6 +107,7 @@
     </div>
   </div>
 </div>
+
 
 
 
