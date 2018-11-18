@@ -40,7 +40,7 @@ def data_print(data):
   print('Pressure: {}'.format(data['pressure']))
   print('Temp: {}'.format(data['temp']))
   print('Climate: {}'.format(data['climate']))
-  # possible climates: 
+  # possible climates: Thunderstorm, Drizzle, Rain, Snow, Atmosphere, Clear, Clouds
   print('Weather: {}'.format(data['weathertype']))
 
 
