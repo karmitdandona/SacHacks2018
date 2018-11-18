@@ -28,11 +28,13 @@ def dashboard(accessToken):
 	vehicleID = vehicles[0]  # always takes the first vehicle
 	vehicle = smartcar.Vehicle(vehicleID, accessToken["access_token"])
 
-	print(vehicleID)
 	odometer = vehicle.odometer()
 	location = vehicle.location()
+	info = vehicle.info()
 	print(location)
 	print(odometer)
+	print(info)
+	print("\n\n\n")
 
 	return render_template("dashboard.html", title="dashboard")
 
