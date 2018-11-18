@@ -22,15 +22,12 @@ def data_fetch(full_api_url):
 
 def organized(raw_info):
     data = dict(
-    aqi = raw_info.get('data')
+    aqi = raw_info.get('data').get('aqi')
     )
     return data
 
 def data_print(data):
   print('AQI: {}'.format(data['aqi']))
 
-if __name__ == '__main__':
-    try:
-        data_print(organized(data_fetch(url_builder(lat, lon))))
-    except IOError:
-        print('no internet')
+def get_Aiq():
+  return data['aiq']
