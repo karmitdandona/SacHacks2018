@@ -28,13 +28,23 @@ def manipulateWindshieldWiper(vehicleInstance):
 
 def executeRules(vehicleInstance, airQuality, tempurature, climate):
   updatedInstance = vehicleInstance
+
+  if len(updatedInstance.odometer) > 1:
+    milesDrivenSinceLast = updatedInstance.odometer[-1] - updatedInstance.odometer[-2]
+  else:
+    milesDrivenSinceLast = 0
+
+  updatedInstance.decreaseWindshieldWiperLifespan(milesDrivenSinceLast)
   if climate == "Drizzle" or climate == "Rain" or climate == "Snow":
     updatedInstance = manipulateWindshieldWiper(updatedInstance)
 
   if updatedInstance.getModel() == "Tesla":
+    updatedInstance.decreaseTeslaAirFilterLifespan(milesDrivenSinceLast) 
     if airQuality > 100:
       updatedInstance = manipulateTeslaAirFilter(updatedInstance, airQuality)
   else:
+    updatedInstance.decreaseBatteryLifespan(milesDrivenSinceLast)
+    updatedInstance.decreasebrakePadLifespan(milesDrivenSinceLast)
     if tempurature <= 32:
       updatedInstance = manipulateBattery(updatedInstance)
       updatedInstance = manipulateBrakePad(updatedInstance)
