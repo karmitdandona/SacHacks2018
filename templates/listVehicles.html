@@ -7,7 +7,11 @@
 <div class="main">
   <h2 style="text-align:center;"><b>List of Vehicles</b></h2>
   <div style="padding:10px 0px 10px 0px; text-align:center;">
-    <a href="{{url_for('dashboard', vehicleID=vehicleIDs[0])}}"><button type="button" class="btn btn-primary">Random New Vehicle<br>(Incoherent Data)</button></a>
+    {% for vehicle in vehicleIDs %}
+      {% if "simulation" not in vehicle and "Simulation" not in vehicle %}
+        <a href="{{url_for('dashboard', vehicleID=vehicle)}}"><button type="button" class="btn btn-primary">Random New Vehicle<br>(Incoherent Data)</button></a>
+      {% endif %}
+    {% endfor %}
   </div>
 
   <div>
