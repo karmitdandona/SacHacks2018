@@ -29,29 +29,48 @@
 </div>
 
 <div class="main" style="padding: 15px 0px 0px 0px">
-  <div class="container-fluid" style="background-color:black">
+  <div class="container-fluid" style="background-color:#222222">
     {% if data['make']=="TESLA" %}
       <div class="row" style="color:white; padding:10px 0px 10px 0px;">
         <div class="col">
           <h3 style="text-align:center">Air Filter</h3>
-          <h4>Replace every 25000 miles</h4>
-          <h4>Remaining miles before replacement: {{data['teslaAirFilterLifespan']}}</h4>
+          <ul>
+            <li><h4>Replace every 25000 miles</h4></li>
+            <li><h4>Remaining miles before replacement: {{data['teslaAirFilterLifespan']}}</h4></li>
+          </ul>
         </div>
         <div class="col">
-          <h3 style="text-align:center">Environmental Affects</h3>
-          <h4 style="text-align:right">You've lost {{25000-data['odometer'][-1]-data['teslaAirFilterLifespan']}} miles due to poor air quality.</h4>
+          <h3 style="text-align:center">Environmental Effects</h3>
+          <h4 style="text-align:center"><span style="color:red">{{25000-data['odometer'][-1]-data['teslaAirFilterLifespan']}}</span> miles lost due to poor air quality.</h4>
         </div>
       </div>
     {% endif %}
-
-
   </div>
+</div>
 
-
-  {{data}}
+<div class="main" style="padding: 15px 0px 0px 0px">
+  <div class="container-fluid" style="background-color:#222222">
+    {% if data['make']!="TESLA" %}
+      <div class="row" style="color:white; padding:10px 0px 10px 0px;">
+        <div class="col">
+          <h3 style="text-align:center">Air Filter</h3>
+          <ul>
+            <li><h4>Replace every 25000 miles</h4></li>
+            <li><h4>Remaining miles before replacement: {{data['teslaAirFilterLifespan']}}</h4></li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3 style="text-align:center">Environmental Effects</h3>
+          <h4 style="text-align:center"><span style="color:red">{{25000-data['odometer'][-1]-data['teslaAirFilterLifespan']}}</span> miles lost due to poor air quality.</h4>
+        </div>
+      </div>
+    {% endif %}
+  </div>
 </div>
 
 
 
+
+{{data}}
 
 {% endblock content %}
