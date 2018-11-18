@@ -49,19 +49,10 @@ def updateDictionary(vechicleId, vehicle):
   with open('data.json', 'w') as outfile:
     json.dump(storedDict, outfile)
 
-def toVehicleInstance(id, json):
-
-  vehicle = Vehicle(json[id]["id"], json[id]["make"], json[id]["model"], json[id]["year"], json[id]["odometer"],eval(json[id]["location"]), json[id]["accessToken"])
-  vehicle.setTeslaAirFilterLifespan(json[id]["teslaAirFilterLifespan"])
-  vehicle.setBrakePadLifespan(json[id]["brakePadLifespan"])
-  vehicle.setBatteryLifespan(json[id]["batteryLifespan"])
-  vehicle.setWindshieldWiperLifespan(json[id]["windshieldWiperLifespan"])
+def toVehicleInstance(id, vehicleDict):
+  vehicle = Vehicle(vehicleDict["id"], vehicleDict["make"], vehicleDict["model"], vehicleDict["year"], vehicleDict["odometer"],eval(vehicleDict["location"]), vehicleDict["accessToken"])
+  vehicle.setTeslaAirFilterLifespan(vehicleDict["teslaAirFilterLifespan"])
+  vehicle.setBrakePadLifespan(vehicleDict["brakePadLifespan"])
+  vehicle.setBatteryLifespan(vehicleDict["batteryLifespan"])
+  vehicle.setWindshieldWiperLifespan(vehicleDict["windshieldWiperLifespan"])
   return vehicle
-
-  # return Vehicle(json[])
-jsonTest = {"newID55555": {"id": 12455, "make": "Tesla", "model": "S3", "year": 2018, "teslaAirFilterLifespan": 27000, "brakePadLifespan": 70000, "batteryLifespan": 54000, "windshieldWiperLifespan": 13500, "odometer":[50000], "location": "[(38.665266, -121.391185)]", "accessToken": None}}
-
-print(toVehicleInstance("newID55555", jsonTest))
-# vehicleInfo = Vehicle(12455, "Tesla", "S3", 2018, 50000, (38.665266, -121.391185))
-# print(vehicleInfo.toJson())
-# updateDictionary(Vehicle(12455, "Tesla", "S3", 2018, 50000, (38.665266, -121.391185)))
