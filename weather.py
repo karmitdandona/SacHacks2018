@@ -7,6 +7,7 @@ r = requests.get("http://api.openweathermap.org/data/2.5/forecast?id=524901&APPI
 r.text
 data = json.loads(r.text)
 
+
 def GetWeather(lon, lat):
   fullURL = url_builder(lon, lat)
   info = data_fetch(fullURL)
