@@ -4,15 +4,6 @@
   * Provides real-time analysis of environmental impact on mileage rating based upon distance driven in various conditions
   * Designed and developed over 24 hours at SacHacks 2018
 
-![Audi Dashboard](https://raw.githubusercontent.com/karmitdandona/SacHacks2018/master/DemoImages/AudiDashboard.JPG "Audi Dashboard")
-
-![SMS Notifications](https://raw.githubusercontent.com/karmitdandona/SacHacks2018/master/DemoImages/smsnotifications.jpg "SMS Notifications")
-
-![Homepage](https://raw.githubusercontent.com/karmitdandona/SacHacks2018/master/DemoImages/homepage.JPG "Homepage")
-
-## Awards
-Recognized by Smartcar for "Best Smartcar Hack" at SacHacks 2018
-
 ## Description
 SmartMaintain is a webapp delivering an environment-based predictive car maintenance algorithm. Utilizing several APIs to access environmental conditions from a vehicle's location, such as climate, temperature, and air quality, in addition to a car's odometer, a historical feed of a vehicle's data is developed. Once a vehicle is authenticated into our system, this data is queried and stored every hour, 24/7.
 
@@ -20,7 +11,16 @@ Every supported make and model of a car can have its own unique maintenance sche
 
 The monitoring system is also automated and will notify users via SMS as their predicted maintenance approaches for specific components, helping to keep the vehicle in the best shape possible.
 
+## Awards
+Recognized by Smartcar for "Best Smartcar Hack" at SacHacks 2018
+
 ## Members
   * Karmit Dandona
   * Gabrielle Cozart
   * Cameron Lim
+
+![Audi Dashboard](https://raw.githubusercontent.com/karmitdandona/SacHacks2018/master/DemoImages/AudiDashboard.JPG "Audi Dashboard")
+
+![SMS Notifications](https://raw.githubusercontent.com/karmitdandona/SacHacks2018/master/DemoImages/smsnotifications.jpg "SMS Notifications")
+
+![Homepage](https://raw.githubusercontent.com/karmitdandona/SacHacks2018/master/DemoImages/homepage.JPG "Homepage")
